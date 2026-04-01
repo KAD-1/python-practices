@@ -9,26 +9,27 @@ while True:
     prices.append(int(input("Enter price: ")))
     i+=1
 print("CUSTOMER: ", name.upper(),"\n Items:",
-      len(items),"\n Subtotal:",sum(prices))
+      len(items)-1,"\n Subtotal:",sum(prices))
+total=sum(prices)
 
+time=int(input("Enter current hour (0-23): "))
+print(("-"*30+"\n"+"Discount : "))
+if time>=6 and time<12:
+    print("Morning discount"+"\n"+"Discount: ",total*0.1," KZT")
+    total*=0.9
 
-# people=int(input("Enter number of people: "))
-# subtotal = price1 + price2
-# tip = subtotal*0.1
-# total = subtotal + tip
-# per_person = total / people
-# print(
-#     "=" * 30,
-#     "\n        CAFE BILL\n"+
-#     "=" * 30,
-#     "\nCustomer : ", name,
-#     "\n" + item1 + " : ", price1, "KZT",
-#     "\n" + item2 + " : ", price2, "KZT",
-#     "\n" + "-" * 30,
-#     "\nSubtotal : ", subtotal, "KZT",
-#     "\nTip (10%) : ", tip, "KZT",
-#     "\nTotal : ", total, "KZT",
-#     "\nPer person : ", per_person, "KZT",
-#     "\n" + "=" * 30)
-# print("Tip included:", tip > 0)
-# print("Bill over 5000 KZT:", total > 5000)
+elif time>=12 and time<17:
+    print("No discount"+"\n"+"Discount: 0 KZT")
+elif time>=17 and time<22:
+    print("Evening discount"+"\n"+"Discount: ",total*0.05," KZT")
+    total*=0.95
+else:
+    print("Closed")
+print("TIP (10%) :",total*1.1)
+print("total :",total)
+
+print("Name uppercase: "+name.upper())
+print("Name lowercase: "+name.lower())
+print("Name length : ",len(name))
+print("Vip customer" if name[0].upper()=='A' or name[0].upper()=='S' else "Regular customer")
+
